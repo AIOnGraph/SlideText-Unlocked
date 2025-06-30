@@ -7,6 +7,10 @@ import google.generativeai as genai
 from spire.presentation import Presentation
 import streamlit as st
 
+# Add custom fonts folder
+Presentation().SetCustomFontsFolder("./app/fonts")
+
+
 def initialize(goole_api_key):
     genai.configure(api_key=goole_api_key)
     vision_model = genai.GenerativeModel(st.secrets['GEMINI_MODEL_ID'])

@@ -1,3 +1,2 @@
 fonts-dejavu-core
 fonts-liberation
-ttf-mscorefonts-installer

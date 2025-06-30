@@ -1,2 +1,4 @@
 fonts-dejavu-core
 fonts-liberation
+fontconfig
+

@@ -2,10 +2,10 @@ import shutil
 import time
 from pathlib import Path
 from PIL import Image
-
 import google.generativeai as genai
 from spire.presentation import Presentation
 import streamlit as st
+from utlis.logger import Logger
 
 # Add custom fonts folder
 Presentation().SetCustomFontsFolder("./app/fonts")
@@ -22,7 +22,7 @@ def save_file(uploaded_file,save_folder_path):
     with open(save_path, mode='wb') as w:
         w.write(uploaded_file.read())
 
-    print(f'[INFO] File saved to {save_path}')
+    Logger().info(f'[INFO] File saved to {save_path}')
     return str(save_path)
 
 
@@ -61,7 +61,7 @@ def generate_summary(model, ppt_len, path_prefix):
             st.secrets['OCR_PROMPT']
         )
 
-        print(f"\n--- Slide {i+1} Summary ---")
+        Logger().info(f"\n--- Slide {i+1} Summary ---")
         
         response = model.generate_content([prompt, image])
         combine_text[f"Slide {i+1}"]=response.text
